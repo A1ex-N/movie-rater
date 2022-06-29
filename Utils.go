@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-  "os"
+	"os"
 )
 
 func GetInput(prompt string, variable *string) {

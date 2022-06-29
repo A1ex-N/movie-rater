@@ -5,3 +5,6 @@ in the same directory where `movie-rater` is located. That's it... That's all it
 
 <h1>build from source</h1>
 just clone the repo and run <code>go build -o movie-rater -ldflags "-s -w" *.go</code>
+<br>
+<br>
+Feel free to make pull requests. This is my first Go project 

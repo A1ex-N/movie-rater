@@ -6,18 +6,17 @@ import (
 )
 
 func main() {
-  inputFile := "movieRatings.json"
-  outputFile := "movieRatings.json"
+	inputFile := "movieRatings.json"
+	outputFile := "movieRatings.json"
 	data, fileSize, err := GetRatings(inputFile)
 
-  if err != nil {
-    log.Fatal(err)
-  }
+	if err != nil {
+		log.Fatal(err)
+	}
 
-  if len(data) == 0 && fileSize > 0 {
-    log.Fatal("There's an error in the json file:", inputFile)
-  }
-
+	if len(data) == 0 && fileSize > 0 {
+		log.Fatal("There's an error in the json file:", inputFile)
+	}
 
 	newRating := GetNewRating()
 

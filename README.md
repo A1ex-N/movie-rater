@@ -10,7 +10,7 @@ just clone the repo and run <code>go build -o movie-rater -ldflags "-s -w" *.go<
 <h1>Features i'd like to have but i'm too dumb/lazy to add</h1>
 <ul>
   <li> Fetch rating for titles from an online database like IMDb or rotten tomatoes to compare to your ratings and store as <code>imdb_rating</code> in json file
-  <li> Maybe fetch genre for titles from an online database and store it in a <code>genre</code> key in the json file
+  <li> Maybe fetch genre for titles from an online database and store it in a <code>genre</code> key in the json file (for the purpose of seeing what your most watched genres are)
   <li> Sort movies by rating and output to user, either in ascending or descending order as chosen by the user
   <li> Fetch runtime of movies and store as <code>runtime</code> key in the json file and then add up all of the runtimes and display how much of your life you have wasted watching movies
 </ul>

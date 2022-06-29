@@ -2,14 +2,14 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 	"time"
-  "errors"
-  "os"
 )
 
 type MovieRating struct {
@@ -20,30 +20,26 @@ type MovieRating struct {
 }
 
 func GetRatings(filename string) (ratings []MovieRating, filesize int64, err error) {
-  fileInfo, err := os.Stat(filename)
-  fileSize := fileInfo.Size() 
+	fileInfo, err := os.Stat(filename)
+	fileSize := fileInfo.Size()
 
-  if err != nil {
-    return nil, 0, err
-  }
+	if err != nil {
+		return nil, 0, err
+	}
 
-  // if fileInfo.Size() == 0 {
-  //   fmt.Println(filename, "is empty")
-  // }
-  
 	rawData, err := ioutil.ReadFile(filename)
-  if err != nil {
-    return nil, fileSize, errors.New("Error reading file")
-  }
+	if err != nil {
+		return nil, fileSize, errors.New("Error reading file")
+	}
 	var movieRatings []MovieRating
 	json.Unmarshal(rawData, &movieRatings)
 	return movieRatings, fileSize, nil
 }
 
 func UpdateJsonFile(filename string, data []MovieRating) {
-  if len(data) == 0 {
-    log.Fatal("The data you've provided is empty. Exiting because if we continue, your existing ratings will be overwritten")
-  }
+	if len(data) == 0 {
+		log.Fatal("The data you've provided is empty. Exiting because if we continue, your existing ratings will be overwritten")
+	}
 	CopyFile(filename, filename+".bak")
 	d, _ := json.MarshalIndent(data, "", "  ")
 	err := ioutil.WriteFile(filename, d, 0644)
